@@ -1,0 +1,441 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Light Theme - Ocean Blue & Coral */
+    --background: 210 40% 98%;
+    --foreground: 210 24% 8%;
+
+    --card: 210 40% 96%;
+    --card-foreground: 210 24% 8%;
+
+    --popover: 210 40% 94%;
+    --popover-foreground: 210 24% 8%;
+
+    --primary: 210 100% 45%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 92%;
+    --secondary-foreground: 210 24% 8%;
+
+    --muted: 210 40% 90%;
+    --muted-foreground: 210 16% 46%;
+
+    --accent: 340 82% 52%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 40% 88%;
+    --input: 210 40% 88%;
+    --ring: 210 100% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom light theme colors */
+    --ocean-blue: 210 100% 45%;
+    --ocean-light: 210 100% 55%;
+    --ocean-dark: 210 100% 35%;
+    --coral: 340 82% 52%;
+    --coral-light: 340 82% 62%;
+    --coral-dark: 340 82% 42%;
+    --sage: 150 50% 45%;
+    --sage-light: 150 50% 55%;
+    --sage-dark: 150 50% 35%;
+    --sand: 45 60% 85%;
+    --sand-light: 45 60% 90%;
+    --sand-dark: 45 60% 75%;
+
+    /* Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(210 100% 45%), hsl(200 100% 50%));
+    --gradient-coral: linear-gradient(135deg, hsl(340 82% 52%), hsl(330 82% 62%));
+    --gradient-sage: linear-gradient(135deg, hsl(150 50% 45%), hsl(140 50% 55%));
+    --gradient-sand: linear-gradient(135deg, hsl(45 60% 85%), hsl(35 60% 90%));
+
+    /* Theme selector variables */
+    --theme-primary: var(--ocean-blue);
+    --theme-secondary: var(--coral);
+    --theme-accent: var(--sage);
+    --theme-neutral: var(--sand);
+  }
+
+  /* Alternative Theme 1: Sunset Theme */
+  [data-theme="sunset"] {
+    --primary: 15 82% 55%;
+    --primary-foreground: 210 40% 98%;
+    --theme-primary: var(--sunset-orange);
+    --theme-secondary: var(--sunset-pink);
+    --theme-accent: var(--sunset-purple);
+    --theme-neutral: var(--sunset-beige);
+
+    --sunset-orange: 15 82% 55%;
+    --sunset-pink: 340 72% 65%;
+    --sunset-purple: 270 60% 60%;
+    --sunset-beige: 35 40% 90%;
+  }
+
+  /* Alternative Theme 2: Forest Theme */
+  [data-theme="forest"] {
+    --primary: 150 50% 35%;
+    --primary-foreground: 210 40% 98%;
+    --theme-primary: var(--forest-green);
+    --theme-secondary: var(--forest-brown);
+    --theme-accent: var(--forest-gold);
+    --theme-neutral: var(--forest-cream);
+
+    --forest-green: 150 50% 35%;
+    --forest-brown: 25 40% 45%;
+    --forest-gold: 45 70% 50%;
+    --forest-cream: 45 30% 95%;
+  }
+
+  /* Alternative Theme 3: Lavender Theme */
+  [data-theme="lavender"] {
+    --primary: 270 60% 65%;
+    --primary-foreground: 210 24% 8%;
+    --theme-primary: var(--lavender-primary);
+    --theme-secondary: var(--lavender-rose);
+    --theme-accent: var(--lavender-purple);
+    --theme-neutral: var(--lavender-gray);
+
+    --lavender-primary: 270 60% 65%;
+    --lavender-rose: 330 60% 70%;
+    --lavender-purple: 280 70% 60%;
+    --lavender-gray: 210 20% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Professional Typography Scale */
+  h1 {
+    @apply font-serif;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    @apply font-serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    @apply font-serif;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    @apply font-display;
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    margin-bottom: 0.875rem;
+  }
+
+  h5 {
+    @apply font-display;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+
+  h6 {
+    @apply font-display;
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 0.625rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    max-width: 65ch;
+    text-align: justify;
+  }
+
+  /* Professional text elements */
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .text-xl {
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .text-3xl {
+    font-size: 1.875rem;
+    line-height: 1.4;
+  }
+
+  .text-4xl {
+    font-size: 2.25rem;
+    line-height: 1.3;
+  }
+
+  .text-5xl {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+
+  .text-6xl {
+    font-size: 3.75rem;
+    line-height: 1.1;
+  }
+
+  .text-7xl {
+    font-size: 4.5rem;
+    line-height: 1.1;
+  }
+
+  /* Font weights */
+  .font-light {
+    font-weight: 300;
+  }
+
+  .font-normal {
+    font-weight: 400;
+  }
+
+  .font-medium {
+    font-weight: 500;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .font-extrabold {
+    font-weight: 800;
+  }
+
+  .font-black {
+    font-weight: 900;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-gold {
+    @apply bg-primary/10 backdrop-blur-xl border border-primary/20;
+  }
+
+  /* Professional Typography Components */
+  .text-display {
+    @apply font-display font-semibold tracking-tight;
+  }
+
+  .text-heading {
+    @apply font-serif font-bold tracking-tight;
+  }
+
+  .text-body {
+    @apply font-body font-normal leading-relaxed;
+  }
+
+  .text-caption {
+    @apply font-body text-sm font-medium leading-normal;
+  }
+
+  .text-overline {
+    @apply font-body text-xs font-semibold uppercase tracking-wider;
+  }
+
+  /* Professional text gradients with better fonts */
+  .text-gradient-ocean {
+    background: var(--gradient-ocean);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    @apply font-serif font-bold;
+  }
+
+  .text-gradient-coral {
+    background: var(--gradient-coral);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    @apply font-serif font-bold;
+  }
+
+  .text-gradient-sage {
+    background: var(--gradient-sage);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    @apply font-serif font-bold;
+  }
+
+  .text-gradient-sand {
+    background: var(--gradient-sand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    @apply font-serif font-bold;
+  }
+
+  /* Enhanced button typography */
+  .btn-gold {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_20px_hsl(210_100%_45%_/_0.3)] transition-all duration-300 font-semibold;
+  }
+
+  .btn-gold:hover {
+    @apply shadow-[0_8px_30px_hsl(210_100%_45%_/_0.4)] -translate-y-0.5;
+  }
+
+  /* Professional section headings */
+  .section-heading {
+    @apply font-serif font-bold text-4xl md:text-5xl mb-6 tracking-tight;
+  }
+
+  .section-subheading {
+    @apply font-display text-lg md:text-xl text-muted-foreground mb-8 font-medium;
+  }
+
+  /* Card typography */
+  .card-title {
+    @apply font-serif text-xl font-semibold mb-2 tracking-tight;
+  }
+
+  .card-description {
+    @apply font-body text-sm text-muted-foreground leading-relaxed;
+  }
+
+  /* Navigation typography */
+  .nav-link {
+    @apply font-body text-sm font-medium transition-colors;
+  }
+
+  .nav-brand {
+    @apply font-serif text-xl font-semibold tracking-tight;
+  }
+
+  .card-luxury {
+    @apply rounded-xl border border-border/50 bg-gradient-to-br from-muted/50 to-card overflow-hidden transition-all duration-500;
+  }
+
+  .card-luxury:hover {
+    @apply border-primary/30 shadow-[0_20px_60px_hsl(45_80%_55%_/_0.1)] -translate-y-1;
+  }
+
+  .input-luxury {
+    @apply bg-input border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  .animate-fade-down {
+    animation: fadeDown 0.5s ease-out forwards;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(222 47% 8%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(222 30% 20%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(45 80% 55% / 0.5);
+}
