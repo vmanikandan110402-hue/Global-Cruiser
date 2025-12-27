@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
-import { Anchor, User, LogOut, LayoutDashboard, Menu, X, ChevronDown, Calendar } from 'lucide-react';
+import { User, LogOut, LayoutDashboard, Menu, X, ChevronDown, Calendar, Waves, Compass, Anchor } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 const Header = () => {
@@ -27,8 +27,11 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/30">
       <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 md:gap-3 group" onClick={handleMobileLinkClick}>
-          <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg group-hover:shadow-[0_0_25px_hsl(210_100%_45%_/_0.4)] transition-all duration-300 group-hover:scale-105">
-            <Anchor className="w-4 h-4 md:w-6 md:h-6 text-primary-foreground" />
+          <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-primary via-ocean to-accent flex items-center justify-center shadow-lg group-hover:shadow-[0_0_30px_hsl(210_100%_45%_/_0.6)] transition-all duration-300 group-hover:scale-105 group-hover:rotate-3">
+            <svg className="w-4 h-4 md:w-6 md:h-6 text-primary-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M2 21h20M3 10l6-6 4 4 6-6M7 14h10M5 18h14"/>
+              <path d="M12 10l-2 2h4l-2-2z"/>
+            </svg>
           </div>
           <div className="flex flex-col">
             <span className="nav-brand text-lg md:text-2xl font-bold tracking-tight">
@@ -39,21 +42,33 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2">
-          <Link to="/" className="nav-link font-bold text-sm px-4 py-2 rounded-lg hover:bg-primary/20 hover:text-primary transition-all duration-300 relative group">
-            Home
+        <nav className="hidden md:flex items-center gap-1">
+          <Link to="/" className="nav-link font-semibold text-sm px-4 py-2.5 rounded-xl hover:bg-primary/10 hover:text-primary transition-all duration-300 relative group">
+            <div className="flex items-center gap-2">
+              <Compass className="w-4 h-4" />
+              <span>Home</span>
+            </div>
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-8"></span>
           </Link>
-          <Link to="/yachts" className="nav-link font-bold text-sm px-4 py-2 rounded-lg hover:bg-primary/20 hover:text-primary transition-all duration-300 relative group">
-            Fleet
+          <Link to="/yachts" className="nav-link font-semibold text-sm px-4 py-2.5 rounded-xl hover:bg-primary/10 hover:text-primary transition-all duration-300 relative group">
+            <div className="flex items-center gap-2">
+              <Waves className="w-4 h-4" />
+              <span>Fleet</span>
+            </div>
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-8"></span>
           </Link>
-          <Link to="/gallery" className="nav-link font-bold text-sm px-4 py-2 rounded-lg hover:bg-primary/20 hover:text-primary transition-all duration-300 relative group">
-            Gallery
+          <Link to="/gallery" className="nav-link font-semibold text-sm px-4 py-2.5 rounded-xl hover:bg-primary/10 hover:text-primary transition-all duration-300 relative group">
+            <div className="flex items-center gap-2">
+              <Anchor className="w-4 h-4" />
+              <span>Gallery</span>
+            </div>
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-8"></span>
           </Link>
-          <Link to="/contact" className="nav-link font-bold text-sm px-4 py-2 rounded-lg hover:bg-primary/20 hover:text-primary transition-all duration-300 relative group">
-            Contact
+          <Link to="/contact" className="nav-link font-semibold text-sm px-4 py-2.5 rounded-xl hover:bg-primary/10 hover:text-primary transition-all duration-300 relative group">
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              <span>Contact</span>
+            </div>
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-8"></span>
           </Link>
         </nav>
@@ -127,19 +142,23 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed top-16 left-0 right-0 bg-background border-b border-border shadow-lg z-40">
-          <nav className="container mx-auto px-4 py-4 space-y-2">
-            <Link to="/" className="block py-2 text-lg font-medium" onClick={handleMobileLinkClick}>
-              Home
+        <div className="md:hidden fixed top-16 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border shadow-lg z-40">
+          <nav className="container mx-auto px-4 py-4 space-y-1">
+            <Link to="/" className="flex items-center gap-3 py-3 px-4 text-lg font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300" onClick={handleMobileLinkClick}>
+              <Compass className="w-5 h-5 text-primary" />
+              <span>Home</span>
             </Link>
-            <Link to="/yachts" className="block py-2 text-lg font-medium" onClick={handleMobileLinkClick}>
-              Fleet
+            <Link to="/yachts" className="flex items-center gap-3 py-3 px-4 text-lg font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300" onClick={handleMobileLinkClick}>
+              <Waves className="w-5 h-5 text-primary" />
+              <span>Fleet</span>
             </Link>
-            <Link to="/gallery" className="block py-2 text-lg font-medium" onClick={handleMobileLinkClick}>
-              Gallery
+            <Link to="/gallery" className="flex items-center gap-3 py-3 px-4 text-lg font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300" onClick={handleMobileLinkClick}>
+              <Anchor className="w-5 h-5 text-primary" />
+              <span>Gallery</span>
             </Link>
-            <Link to="/contact" className="block py-2 text-lg font-medium" onClick={handleMobileLinkClick}>
-              Contact
+            <Link to="/contact" className="flex items-center gap-3 py-3 px-4 text-lg font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300" onClick={handleMobileLinkClick}>
+              <Calendar className="w-5 h-5 text-primary" />
+              <span>Contact</span>
             </Link>
             
             {isAuthenticated && (

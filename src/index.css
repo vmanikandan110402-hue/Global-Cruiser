@@ -439,3 +439,15 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(45 80% 55% / 0.5);
 }
+
+/* Footer center alignment */
+footer {
+  text-align: center;
+}
+
+footer .text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+}
