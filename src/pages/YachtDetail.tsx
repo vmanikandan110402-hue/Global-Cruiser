@@ -97,9 +97,9 @@ const YachtDetail = () => {
             className="w-full h-full object-cover scale-105 animate-slow-zoom"
           />
           
-          {/* Enhanced gradient overlay for better text visibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background/80" />
+          {/* Reduced gradient overlay for better image visibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-background/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background/50" />
           
           {/* Floating content overlay with better contrast */}
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-12">

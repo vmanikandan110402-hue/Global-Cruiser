@@ -50,8 +50,16 @@ const Yachts = () => {
       <Header />
 
       {/* Hero */}
-      <section className="pt-24 md:pt-32 pb-12 md:pb-16 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
+      <section className="pt-24 md:pt-32 pb-20 md:pb-24 relative">
+        {/* Background Image */}
+        <div className="absolute inset-0 overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=1920&q=80" 
+            alt="Luxury Yacht Fleet" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-background/90" />
+        </div>
         <div className="container mx-auto px-4 relative">
           <div className="text-center max-w-3xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -65,29 +73,26 @@ const Yachts = () => {
             <p className="text-muted-foreground text-sm md:text-base mb-8">
               Explore our exclusive collection of luxury yachts, each designed to provide unforgettable experiences on the water.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Filters */}
-      <section className="pb-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="relative w-full md:w-96">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input
-                placeholder="Search yachts..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 w-full"
-              />
+            
+            {/* Search Bar in Hero */}
+            <div className="max-w-md mx-auto mb-8">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
+                <Input
+                  placeholder="Search yachts..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 w-full h-12 bg-white/90 backdrop-blur-lg border-primary/30 text-foreground placeholder:text-muted-foreground"
+                />
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2 w-full md:w-auto">
+            
+            {/* Capacity Filters */}
+            <div className="flex flex-wrap gap-2 justify-center">
               <Button
                 variant={capacityFilter === null ? "default" : "outline"}
                 size="sm"
                 onClick={() => setCapacityFilter(null)}
-                className="flex-1 md:flex-none"
               >
                 All
               </Button>
@@ -95,7 +100,6 @@ const Yachts = () => {
                 variant={capacityFilter === 10 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setCapacityFilter(10)}
-                className="flex-1 md:flex-none"
               >
                 10+ Guests
               </Button>
@@ -103,9 +107,15 @@ const Yachts = () => {
                 variant={capacityFilter === 20 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setCapacityFilter(20)}
-                className="flex-1 md:flex-none"
               >
                 20+ Guests
+              </Button>
+              <Button
+                variant={capacityFilter === 30 ? "default" : "outline"}
+                size="sm"
+                onClick={() => setCapacityFilter(30)}
+              >
+                30+ Guests
               </Button>
             </div>
           </div>
@@ -113,10 +123,10 @@ const Yachts = () => {
       </section>
 
       {/* Yacht Grid */}
-      <section className="pb-16">
+      <section className="pb-16 pt-12">
         <div className="container mx-auto px-4">
           {isLoading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="card-luxury animate-pulse">
                   <div className="h-48 md:h-64 bg-muted" />
